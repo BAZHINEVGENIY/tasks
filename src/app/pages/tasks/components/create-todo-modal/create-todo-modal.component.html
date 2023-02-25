@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>{{ 'TODO.TITLE_MODAL' | translate }}</h1>
+<form (ngSubmit)="createTodo()" [formGroup]="form">
+  <div class="create__inputs" mat-dialog-content>
+    <mat-form-field>
+      <mat-label>{{ 'TODO.TITLE' | translate }}</mat-label>
+      <input formControlName="title" matInput />
+    </mat-form-field>
+
+    <tasks-form-field-priority [parentFormGroup]="form"></tasks-form-field-priority>
+    <tasks-form-field-status [parentFormGroup]="form"></tasks-form-field-status>
+
+    <tasks-form-field-reporter
+      [parentFormGroup]="form"
+      [users]="users"
+    ></tasks-form-field-reporter>
+
+    <tasks-form-field-assignees
+      [parentFormGroup]="form"
+      [users]="users"
+    ></tasks-form-field-assignees>
+
+    <div class="create__editor">
+      <quill-editor formControlName="description"
+                    placeholder="{{ 'TODO.QUILL' | translate }}"
+      ></quill-editor>
+    </div>
+  </div>
+  <div class="create-btns" mat-dialog-actions [align]="'end'">
+    <button
+      [disabled]="form.invalid"
+      color="primary"
+      mat-raised-button
+      type="submit"
+    >{{ 'TODO.CREATE' | translate }}
+    </button>
+    <button mat-raised-button>{{ 'CANCEL' | translate }}</button>
+  </div>
+</form>

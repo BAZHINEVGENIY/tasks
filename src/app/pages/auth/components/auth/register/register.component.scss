@@ -1,0 +1,39 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  //margin: 10%;
+  align-items: center;
+  margin: auto;
+  min-height: 90%;
+  overflow: auto;
+
+  form {
+    mat-form-field {
+      width: 100%;
+    }
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid slategray;
+  }
+
+  form.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    a {
+      margin: 0;
+    }
+  }
+}
+

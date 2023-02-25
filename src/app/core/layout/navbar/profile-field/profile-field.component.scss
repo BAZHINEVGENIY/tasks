@@ -1,0 +1,17 @@
+.profile {
+  text-align: center;
+  width: 100%;
+  max-width: 200px;
+
+  &-image {
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+    margin-left: 20px;
+  }
+}
+
+.mat-mdc-option {
+  justify-content: center !important;
+  text-align: center;
+}

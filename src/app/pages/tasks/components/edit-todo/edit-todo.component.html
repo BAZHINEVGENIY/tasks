@@ -1,0 +1,143 @@
+<ng-template #loading>
+  <span>Loading...</span>
+</ng-template>
+
+<div mat-dialog-title class="dialog__title">
+  <div *ngIf="!isTypeWindowModal" class="dialog__title-back">
+    <a (click)="editTodo()" routerLink="/demos" mat-icon-button>
+      <mat-icon>backspace</mat-icon>
+    </a>
+  </div>
+
+  <h3>Task №: {{ resultTodo.id }}</h3>
+
+  <div *ngIf="isTypeWindowModal" class="dialog__title-modal">
+    <button
+      (click)="sendingData(); this.dialogRef?.close()"
+      class="material-icons aspect"
+      mat-icon-button
+    >
+      <mat-icon>aspect_ratio</mat-icon>
+    </button>
+
+    <button
+      (click)="editTodo(); this.dialogRef?.close()"
+      class="material-icons close"
+      mat-icon-button
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<form
+  *ngIf="resultTodo !== undefined; else loading"
+  [class.modal]="isTypeWindowModal"
+  [formGroup]="form"
+>
+  <div class="example-left">
+    <mat-form-field appearance="outline" class="example-left_title">
+      <mat-label>{{ 'TODO.TITLE' | translate }}</mat-label>
+      <input formControlName="title" matInput />
+    </mat-form-field>
+
+    <div class="example-left_editor">
+      <quill-editor formControlName="description"
+                    placeholder="{{ 'TODO.QUILL' | translate }}"
+      ></quill-editor>
+    </div>
+
+    <mat-form-field
+      [formGroup]="commentForm"
+      appearance="outline"
+      class="example-left_input"
+    >
+      <mat-label>{{ 'TODO.COMMENTS' | translate }}</mat-label>
+      <textarea
+        (focus)="isVisibleCommentBtn = true"
+        formControlName="text"
+        matInput
+      ></textarea>
+
+      <div *ngIf="isVisibleCommentBtn" class="comment-btn">
+        <button
+          (click)="addComment($event)"
+          [disabled]="commentForm.invalid"
+          color="primary"
+          mat-icon-button
+        >
+          <mat-icon>done</mat-icon>
+        </button>
+        <button (click)="cancelComment($event)" mat-icon-button>
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+      </div>
+    </mat-form-field>
+
+    <div class="comments">
+      <div *ngFor="let comment of resultTodo.comments" class="comments__item">
+        <div class="comments__item-title">
+
+          <p>
+            <img [src]="currentUser.image" alt=""
+                 style="width: 20px; height: 20px; border-radius: 50%;" />
+            {{ comment.authorId }}
+            {{ comment.time | date : 'dd.MM.yy HH:mm:ss' }}
+          </p>
+          <button
+            (click)="editComment(comment.text)"
+            color="primary"
+            mat-icon-button
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button
+            (click)="removeComment(comment.time)"
+            color="warn"
+            mat-icon-button
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <p>{{ comment.text }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-right">
+    <div class="reporter">
+      <span>{{ 'TODO.REPORTER' | translate }}:</span>
+      <span class="reporter__name">
+        <img [src]="reporter.avatarUrl" alt="{{ reporter.name }}" />{{
+        reporter.name
+        }}</span
+      >
+    </div>
+
+    <tasks-form-field-assignees
+      [parentFormGroup]="form"
+      [users]="users$ | async"
+    ></tasks-form-field-assignees>
+    <tasks-form-field-priority [parentFormGroup]="form"></tasks-form-field-priority>
+    <tasks-form-field-status [parentFormGroup]="form"></tasks-form-field-status>
+
+    <div class="time">
+      <p>{{ 'TODO.CREATED' | translate }}: {{ resultTodo.created | date : 'dd.MM.yy HH:mm:ss' }}</p>
+      <p>{{ 'TODO.UPDATED' | translate }}: {{ resultTodo.updated | date : 'dd.MM.yy HH:mm:ss' }}</p>
+    </div>
+    <div class="edit-btn">
+      <button
+        (click)="editTodo();
+        this.router.navigate(['/demos']);
+        this.dialogRef?.close()"
+        (focus)="isVisibleCommentBtn = false"
+        [disabled]="form.pristine"
+        color="primary"
+        mat-icon-button
+        type="submit"
+      >
+        <mat-icon>done_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>

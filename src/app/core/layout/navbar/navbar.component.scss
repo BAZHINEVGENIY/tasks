@@ -1,0 +1,81 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+:host {
+  width: 100%;
+}
+
+.container {
+  @include flexCenter;
+  justify-content: space-between;
+
+  &__sm {
+    min-height: 500px;
+    flex-direction: column;
+    height: 97%;
+    padding-top: 20px;
+
+    .container__auth {
+      &_on, &_off, &_on-ref {
+        @include flexCenter;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      &_on-ref > a {
+        margin-top: 20px;
+      }
+
+      &__content {
+        @include flexCenter;
+        flex-direction: column;
+
+        &-darkMode {
+          @include flexCenter;
+          margin-top: 10px;
+        }
+      }
+
+      &_on-profile {
+        margin-bottom: 10px;
+        max-width: 80px;
+      }
+    }
+  }
+
+  &__lg {
+    .container__auth {
+      &_on-ref {
+        @include flexCenter;
+        justify-content: flex-start;
+        flex: 1;
+      }
+
+      &_on, &_off {
+        display: flex;
+        flex: 1;
+
+        a {
+          margin-left: 20px;
+        }
+      }
+
+      &__content {
+        @include flexCenter;
+
+        &-darkMode {
+          @include flexCenter;
+        }
+      }
+    }
+  }
+}
+
+a, h1 {
+  margin: 0;
+}

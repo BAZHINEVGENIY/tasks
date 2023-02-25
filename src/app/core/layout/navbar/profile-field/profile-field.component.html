@@ -1,0 +1,18 @@
+<mat-form-field *ngIf="(users$ | async) as user"
+                subscriptSizing="dynamic"
+                appearance="outline"
+                class="profile">
+  <img matPrefix [src]="user.image"
+       class="profile-image"
+       alt="icon"
+  />
+  <mat-select placeholder="{{user.username}}">
+    <mat-option [routerLink]="['/profile', user.username]">
+      {{ 'PROFILE.SETTINGS_FIELD' | translate }}
+    </mat-option>
+
+    <mat-option (click)="facadeAuth.getCurrentUserFailure()">
+      {{ 'PROFILE.LOGOUT_FIELD' | translate }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{ 'CONFIRM_MODAL.TITLE' | translate }}</h1>
+<mat-dialog-content>
+  <p>{{ 'CONFIRM_MODAL.TEXT' | translate }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-stroked-button [mat-dialog-close]="false">{{ 'CANCEL' | translate }}</button>
+  <button mat-stroked-button [mat-dialog-close]="true">{{ 'CONFIRM' | translate }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,86 @@
+<div class="auth">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    (input)="clearErrors()"
+  >
+    <mat-label><h1 style="margin: 0">{{ 'PROFILE.TITLE_FORM' | translate }}</h1></mat-label>
+
+    <tasks-backend-error
+      *ngIf="(errors$ | async) as error"
+      [backendErrors]="error"
+      style="margin-bottom: 5px"
+    ></tasks-backend-error>
+
+    <mat-progress-bar
+      *ngIf="isLoading$ | async"
+      style="margin: 10px 0"
+      mode="indeterminate"
+    ></mat-progress-bar>
+
+    <mat-form-field>
+      <mat-label>{{ 'PROFILE.LABEL_IMAGE' | translate }}</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="image">
+      <mat-error *ngIf="getErrField('image', 'required')"
+      >{{ 'PROFILE.ERROR_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'PROFILE.LABEL_USERNAME' | translate }}</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username">
+      <mat-error *ngIf="getErrField('username', 'required')"
+      >{{ 'PROFILE.ERROR_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <quill-editor placeholder="{{ 'PROFILE.LABEL_QUILL' | translate }}"
+                  formControlName="bio"
+                  style="margin-bottom: 22px"
+    ></quill-editor>
+
+    <mat-form-field>
+      <mat-label>{{ 'PROFILE.LABEL_EMAIL' | translate }}</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="email">
+      <mat-error *ngIf="getErrField('email', 'required')"
+      >{{ 'PROFILE.ERROR_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="getErrField('email', 'email')"
+      >{{ 'PROFILE.ERROR_EMAIL' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'PROFILE.LABEL_PASSWORD' | translate }}</mat-label>
+      <input autofocus
+             type="password"
+             matInput
+             formControlName="password">
+      <mat-error *ngIf="getErrField('password', 'required')"
+      >{{ 'PROFILE.ERROR_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="getErrField('password', 'minlength')"
+      >{{ 'PROFILE.ERROR_MINLENGHT' | translate:{count: 8} }}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="auth__btn">
+      <button
+        [disabled]="form.invalid || (isLoading$ | async)"
+        mat-raised-button
+        type="submit"
+        color="primary"
+      >{{ 'PROFILE.BTN' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

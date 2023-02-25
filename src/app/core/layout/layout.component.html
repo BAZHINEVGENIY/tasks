@@ -1,0 +1,53 @@
+<ng-container>
+  <ng-template #content>
+    <ng-content></ng-content>
+  </ng-template>
+
+  <div
+    *ngIf="sizeWindow.isLg$ | async"
+    class="container mat-app-background"
+  >
+    <mat-toolbar color="primary">
+      <tasks-navbar
+        (eventThemeModeSwitched)="switchDarkMode($event)"
+        [isToggleCheck]="isToggleCheck"
+      ></tasks-navbar>
+    </mat-toolbar>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </div>
+
+  <div
+    *ngIf="(sizeWindow.isSm$ | async)"
+    class="container mat-app-background"
+  >
+    <mat-sidenav-container autosize class="container__content">
+      <mat-sidenav
+        #sidenav
+        mode="side"
+        opened
+        class="container__content__sidenav"
+      >
+        <tasks-navbar
+          (eventThemeModeSwitched)="switchDarkMode($event)"
+          [isToggleCheck]="isToggleCheck"
+        ></tasks-navbar>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <button
+          (click)="sidenav.toggle()"
+          class="container__content__sidenav__toggle">
+        </button>
+        <button
+          (click)="sidenav.toggle()"
+          color="primary"
+          mat-icon-button
+          class="container__content__sidenav__toggle-btn">
+          <mat-icon>swap_horizontal_circle</mat-icon>
+        </button>
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</ng-container>
+
+

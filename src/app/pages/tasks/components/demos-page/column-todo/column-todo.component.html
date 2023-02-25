@@ -1,0 +1,33 @@
+<div
+  *ngIf="todos$ | sortTodo : status | async as sortedTodos"
+  (cdkDropListDropped)="dropCardService.drop($event)"
+  [cdkDropListData]="sortedTodos"
+  id="{{ status }}"
+  cdkDropList
+  class="demos__content_card"
+>
+  <div class="demos__content_card-header">
+    <p style="margin: 0; padding: 10px"
+    >{{ 'TODO.STATUS.' + status | uppercase | translate }}
+    </p>
+  </div>
+
+  <mat-spinner *ngIf="isLoading$ | async"
+               diameter="50"
+               mode="indeterminate"
+  ></mat-spinner>
+
+  <div *ngIf="!(isLoading$ | async)"
+       class="demos__content_card-column"
+  >
+    <tasks-card-todo
+      (editEvent)="editTodo($event)"
+      (removeEvent)="removeTodo($event)"
+      *ngFor="let todo of sortedTodos | searchTodo : searchStr"
+      [id]="todo.id"
+      [priority]="todo.priority"
+      [title]="todo.title"
+      style="width: 95%"
+    ></tasks-card-todo>
+  </div>
+</div>

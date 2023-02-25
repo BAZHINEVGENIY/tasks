@@ -1,0 +1,72 @@
+<div addClassSize="container"
+     class="container"
+>
+  <a mat-button
+     [routerLinkActiveOptions]="{ exact: true }"
+     routerLink="/"
+     routerLinkActive="active"
+  >
+    <h1>{{ 'NAVBAR.APP_LABEL' | translate }}</h1>
+  </a>
+
+  <ng-container [ngSwitch]="isLoggedIn$ | async"
+                class="container__auth"
+  >
+    <div *ngSwitchCase="true"
+         class="container__auth_on"
+    >
+      <div class="container__auth_on-ref">
+        <a mat-button
+           routerLink="/demos"
+           routerLinkActive="active"
+        >{{ 'NAVBAR.DEMOS' | translate }}</a>
+
+        <a mat-button
+           routerLink="/blog"
+           routerLinkActive="active"
+        >{{ 'NAVBAR.BLOG' | translate }}</a>
+
+        <a mat-button
+           routerLink="/cv"
+           routerLinkActive="active"
+        >{{ 'NAVBAR.CV' | translate }}</a>
+
+        <a mat-button
+           routerLink="/contacts"
+           routerLinkActive="active"
+        >{{ 'NAVBAR.CONTACTS' | translate }}</a>
+      </div>
+      <div class="container__auth_on-profile">
+        <tasks-profile-field></tasks-profile-field>
+      </div>
+    </div>
+    <div *ngSwitchCase="false"
+         class="container__auth_off"
+    >
+      <a mat-button
+         routerLink="/register"
+         routerLinkActive="active"
+      >{{ 'NAVBAR.SIGN_UP' | translate }}</a>
+
+      <a mat-button
+         routerLink="/login"
+         routerLinkActive="active"
+      >{{ 'NAVBAR.SIGN_IN' | translate }}</a>
+    </div>
+
+
+  </ng-container>
+  <div class="container__auth__content">
+    <tasks-language-field></tasks-language-field>
+
+    <div class="container__auth__content-darkMode">
+      <mat-icon>brightness_5</mat-icon>
+      <mat-slide-toggle
+        [ngModel]="isToggleCheck"
+        (change)="darkModeSwitched($event)"
+      ></mat-slide-toggle>
+      <mat-icon>bedtime</mat-icon>
+    </div>
+
+  </div>
+</div>

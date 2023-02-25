@@ -1,0 +1,33 @@
+<div class="demos"
+     addClassSize="demos"
+>
+  <div class="demos__search">
+    <tasks-search-bar #searchBar></tasks-search-bar>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div cdkDropListGroup
+       class="demos__content"
+  >
+    <tasks-column-todo
+      [searchStr]="searchBar?.searchStr"
+      [status]="status[0]"
+    ></tasks-column-todo>
+
+    <tasks-column-todo
+      [searchStr]="searchBar?.searchStr"
+      [status]="status[1]"
+    ></tasks-column-todo>
+
+    <tasks-column-todo
+      [searchStr]="searchBar?.searchStr"
+      [status]="status[2]"
+    ></tasks-column-todo>
+
+    <tasks-column-todo
+      [searchStr]="searchBar?.searchStr"
+      [status]="status[3]"
+    ></tasks-column-todo>
+  </div>
+</div>

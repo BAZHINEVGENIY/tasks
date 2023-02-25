@@ -1,0 +1,119 @@
+p {
+  margin: 0;
+}
+
+.modal {
+  max-width: 750px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.dialog__title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  h1 {
+    margin: 0;
+  }
+
+  &-back {
+    position: absolute;
+    left: 3%;
+    bottom: 0;
+  }
+
+  &-modal {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+
+  .example-left {
+    width: 55%;
+    max-height: 100%;
+    overflow: auto;
+
+    &_title {
+      position: relative;
+      width: 95%;
+      margin-top: 20px;
+    }
+
+    &_editor {
+      width: 95%;
+    }
+
+    &_input {
+      position: relative;
+      width: 95%;
+      margin-top: 20px;
+
+      .comment-btn {
+        position: absolute;
+        right: -10px;
+        bottom: 5px;
+      }
+    }
+
+    .comments {
+      width: 95%;
+
+      &__item {
+        margin-bottom: 20px;
+
+        &-title {
+          display: flex;
+          align-items: center;
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+
+  .example-right {
+    width: 35%;
+  }
+
+  .reporter {
+    width: 100%;
+    margin-top: 17px;
+    font-size: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 30px;
+      border-radius: 50%;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    &__name {
+      height: 40px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 21.45px;
+    }
+  }
+
+  .time > p {
+    margin-bottom: 10px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,14 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  mat-form-field {
+    margin-left: 6%;
+  }
+
+  button {
+    transform: scale(1.5);
+    margin-right: 5%;
+  }
+}

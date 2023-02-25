@@ -1,0 +1,14 @@
+<div class="search">
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Search Todo...</mat-label>
+    <input [(ngModel)]="searchStr" matInput />
+  </mat-form-field>
+  <button
+    [disabled]="(isLoadingUser$ | async) || (isLoadingTodo$ | async)"
+    (click)="createTodo()"
+    color="primary"
+    mat-icon-button
+  >
+    <mat-icon>note_add</mat-icon>
+  </button>
+</div>

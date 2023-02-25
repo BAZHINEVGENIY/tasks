@@ -1,0 +1,76 @@
+<div class="auth">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="auth()"
+    (input)="clearErrors()"
+  >
+    <mat-label><h1 style="margin: 0">{{ 'AUTH.TITLE_FORM_IN' | translate }}</h1></mat-label>
+    <a
+      mat-button
+      color="primary"
+      routerLink="/register"
+    >{{ 'AUTH.REF_IN' | translate }}</a>
+
+    <tasks-backend-error
+      *ngIf="(errors$ | async) as error"
+      [backendErrors]="error"
+      style="margin-bottom: 5px"
+    ></tasks-backend-error>
+
+    <mat-progress-bar
+      *ngIf="isLoading$ | async"
+      style="margin: 10px 0"
+      mode="indeterminate"
+    ></mat-progress-bar>
+
+    <mat-form-field>
+      <mat-label>{{ 'AUTH.LABEL_EMAIL' | translate }}</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="email">
+      <mat-error *ngIf="getErrField('email', 'required')">
+        {{ 'AUTH.ERROR_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="getErrField('email', 'email')">
+        {{ 'AUTH.ERROR_EMAIL' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'AUTH.LABEL_PASSWORD' | translate }}</mat-label>
+      <input
+        [type]="hidePassword ? 'password' : 'text'"
+        matInput
+        formControlName="password"
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hidePassword = !hidePassword; $event.stopPropagation()"
+      >
+        <mat-icon>
+          {{hidePassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      </button>
+
+      <mat-error *ngIf="getErrField('password', 'required')">
+        {{ 'AUTH.ERROR_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="getErrField('password', 'minlength')">
+        {{ 'AUTH.ERROR_MINLENGHT' | translate: {count: 8} }}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="auth__btn">
+      <button
+        [disabled]="form.invalid || (isLoading$ | async)"
+        mat-raised-button
+        type="submit"
+        color="primary"
+      >{{ 'AUTH.BTN_IN' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

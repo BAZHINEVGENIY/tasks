@@ -41,7 +41,7 @@
     <mat-form-field>
       <mat-label>{{ 'AUTH.LABEL_EMAIL' | translate }}</mat-label>
       <input
-        type="text"
+        type="email"
         matInput
         formControlName="email">
       <mat-error *ngIf="getErrField('email', 'required')"

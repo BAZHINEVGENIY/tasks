@@ -1,0 +1,71 @@
+{
+  "AUTH": {
+    "REF_IN": "Need an account?",
+    "REF_UP": "Have an account?",
+    "TITLE_FORM_IN": "Sing In",
+    "TITLE_FORM_UP": "Sing Up",
+    "LABEL_USERNAME": "Username",
+    "LABEL_EMAIL": "Email",
+    "LABEL_PASSWORD": "Password",
+    "ERROR_REQUIRED": "Field must not be empty",
+    "ERROR_EMAIL": "Incorrect email address",
+    "ERROR_MINLENGHT": "Min length {{count}} symbols",
+    "BTN_IN": "Sing In",
+    "BTN_UP": "Sign Up"
+  },
+  "NAVBAR": {
+    "APP_LABEL": "My App",
+    "DEMOS": "Demos",
+    "BLOG": "Blog",
+    "CV": "CV",
+    "CONTACTS": "Contact",
+    "SIGN_IN": "Sing In",
+    "SIGN_UP": "Sing Up"
+  },
+  "PROFILE": {
+    "SETTINGS_FIELD": "Settings profile",
+    "LOGOUT_FIELD": "Logout",
+    "TITLE_FORM": "Your settings",
+    "LABEL_QUILL": "Biography",
+    "LABEL_IMAGE": "Image",
+    "LABEL_USERNAME": "Username",
+    "LABEL_EMAIL": "Email",
+    "LABEL_PASSWORD": "Password",
+    "ERROR_REQUIRED": "Field must not be empty",
+    "ERROR_EMAIL": "Incorrect email address",
+    "ERROR_MINLENGHT": "Min length {{count}} symbols",
+    "BTN": "Update settings"
+  },
+  "TODO": {
+    "STATUS": {
+      "LABEL": "Status",
+      "EVALUATION": "Evaluation",
+      "WORK": "Work",
+      "REVIEW": "Review",
+      "PERFORMED": "Performed"
+    },
+    "PRIORITY": {
+      "LABEL": "Priority",
+      "LOWEST": "Lowest",
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "HIGHEST": "Highest"
+    },
+    "TITLE": "Title",
+    "TITLE_MODAL": "Add task",
+    "CREATE": "Create task",
+    "REPORTER": "Reporter",
+    "ASSIGNEES": "Assignees",
+    "COMMENTS": "Comments",
+    "CREATED": "Created",
+    "UPDATED": "Updated",
+    "QUILL": "Describe a task"
+  },
+  "CONFIRM_MODAL": {
+    "TITLE": "Are you sure?",
+    "TEXT": "You data will not be saved, consider to save your form before"
+  },
+  "CANCEL": "Cancel",
+  "CONFIRM": "Confirm"
+}
